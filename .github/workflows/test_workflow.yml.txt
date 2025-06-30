@@ -1,0 +1,23 @@
+name: 'Prueba de Flujo de Trabajo Manual'
+
+# Esta línea permite que activemos el workflow manualmente desde la web de GitHub
+on:
+  workflow_dispatch:
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest # El trabajo se ejecutará en un servidor virtual con Ubuntu
+    steps:
+      # Paso 1: Descarga el código de tu repositorio al servidor virtual
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Paso 2: Configura el entorno de Python en el servidor
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # Paso 3: Ejecuta nuestro script de prueba y muestra el resultado
+      - name: Run test script
+        run: python test_gem.py
