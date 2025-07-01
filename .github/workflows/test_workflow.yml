@@ -1,8 +1,6 @@
 name: 'Prueba de IA - GEM Redactor Creativo'
 
-# La palabra 'on:' no lleva espacios delante
 on:
-  # 'workflow_dispatch:' debe tener EXACTAMENTE DOS ESPACIOS delante
   workflow_dispatch:
 
 jobs:
