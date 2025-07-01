@@ -18,6 +18,11 @@ jobs:
       - name: Install Google AI Library
         run: pip install google-generativeai
 
+      # ---- NUEVO PASO DE VERIFICACIÓN ----
+      - name: Show content of python script
+        run: cat test_gem.py
+      # -----------------------------------
+
       - name: Run GEM script with API Key
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
