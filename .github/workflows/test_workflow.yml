@@ -1,10 +1,10 @@
-name: 'Prueba de Flujo de Trabajo Manual'
+name: 'Prueba de IA - GEM Redactor Creativo'
 
 on:
   workflow_dispatch:
 
 jobs:
-  run-python-script:
+  run-gemini-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -15,10 +15,12 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ---- NUEVO PASO DE DIAGNÓSTICO ----
-      - name: List files for debugging
-        run: ls -R
-      # -----------------------------------
+      # Nuevo paso: Instalar la librería de Google para la IA
+      - name: Install Google AI Library
+        run: pip install google-generativeai
 
-      - name: Run test script
+      # Paso actualizado: Ejecuta el script y le pasa la clave secreta
+      - name: Run GEM script with API Key
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} # Aquí se usa el secreto
         run: python test_gem.py
